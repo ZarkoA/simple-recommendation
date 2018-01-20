@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.example.simple.recommendation.database.DataLoader;
 import com.example.simple.recommendation.spring.config.AppConfig;
 import com.example.simple.recommendation.spring.entity.Article;
 import com.example.simple.recommendation.spring.service.ArticleService;
@@ -14,20 +15,17 @@ import com.example.simple.recommendation.spring.service.ArticleService;
 public class SimpleRecommendationApplication {
 
 	public static void main(String[] args) {
+		
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-
 		ArticleService articleService = context.getBean(ArticleService.class);
+		DataLoader loader = new DataLoader(context);
 
-		// Add Users
-		articleService.addArticle(new Article("Something Interresting"));
-		articleService.addArticle(new Article("Something Boring"));
-		articleService.addArticle(new Article("Something for Women"));
-		articleService.addArticle(new Article("Something for Men"));
+		loader.loadData();
 
-		// Get Users
 		List<Article> articles = articleService.listArticles();
 		
 		for (Article article : articles) {
+			System.out.println("Printing Article Titles");
 			System.out.println("Article Title = " + article.getArticleTitle());
 			System.out.println();
 		}

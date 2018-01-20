@@ -1,5 +1,7 @@
 package com.example.simple.recommendation.spring.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,20 +17,28 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "ARTICLE_TITLE")
-	private String articleTitle;
+	@Column(name = "TITLE")
+	private String title;
+	
+	@Column(name = "CATEGORY_ID")
+	private String CategoryId;
+	
+	@Column(name = "PUBLISHING_DATE")
+	private Date publishingDate;
 
 	public String getArticleTitle() {
-		return articleTitle;
+		return title;
 	}
 
 	public void setArticleTitle(String newArticleTitle) {
-		articleTitle = newArticleTitle;
+		title = newArticleTitle;
 	}
 
-	public Article() {}
+	public Article() {
+	}
 
 	public Article(String articleTitle) {
-	      this.articleTitle = articleTitle;
-	   }
+		this.title = articleTitle;
+	}
+	
 }
