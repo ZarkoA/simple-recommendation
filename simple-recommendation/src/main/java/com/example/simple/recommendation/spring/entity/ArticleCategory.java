@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,33 +19,35 @@ public class ArticleCategory {
 	@Column(name = "ID", unique = true)
 	private long articleCategoryId;
 	
-	@Column(name = "ARTICLE_ID")
-	private long articleId;
+	@OneToOne
+	@JoinColumn(name = "ARTICLE_CODE")
+	private Article article;
 	
-	@Column(name = "CATEGORY_ID")
-	private long categoryId;
-
-	public long getArticleId() {
-		return articleId;
-	}
-
-	public void setArticleId(long articleId) {
-		this.articleId = articleId;
-	}
-
-	public long getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(long categoryId) {
-		this.categoryId = categoryId;
-	}
-
+	@OneToOne
+	@JoinColumn(name = "ID")
+	private Category category;
+	
 	public long getArticleCategoryId() {
 		return articleCategoryId;
 	}
 
 	public void setArticleCategoryId(long articleCategoryId) {
 		this.articleCategoryId = articleCategoryId;
+	}
+
+	public Article getArticle() {
+		return article;
+	}
+
+	public void setArticle(Article article) {
+		this.article = article;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

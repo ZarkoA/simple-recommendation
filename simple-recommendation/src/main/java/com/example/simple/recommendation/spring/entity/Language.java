@@ -18,17 +18,17 @@ public class Language {
 	private long languageId;
 
 	@Column(name = "LANGUAGE_KEY")
-	private String LanguageKey;
+	private String languageKey;
 
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
 	public String getLanguageKey() {
-		return LanguageKey;
+		return languageKey;
 	}
 
-	public void setLanguageKey(String LanguageKey) {
-		this.LanguageKey = LanguageKey;
+	public void setLanguageKey(String languageKey) {
+		this.languageKey = languageKey;
 	}
 
 	public String getDescription() {
@@ -42,8 +42,8 @@ public class Language {
 	public Language() {
 	}
 
-	public Language(String LanguageKey, String description) {
-		this.LanguageKey = LanguageKey;
+	public Language(String languageKey, String description) {
+		this.languageKey = languageKey;
 		this.description = description;
 	}
 

@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +30,10 @@ public class Improvement {
 	
 	@Column
 	private int descriptionKeywordNumber;
+	
+	@OneToOne
+	@JoinColumn(name = "ID")
+	private Category category;
 
 	public long getImprovementId() {
 		return improvementId;
@@ -67,5 +73,13 @@ public class Improvement {
 
 	public void setDescriptionKeywordNumber(int descriptionKeywordNumber) {
 		this.descriptionKeywordNumber = descriptionKeywordNumber;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

@@ -38,9 +38,9 @@ public class DataLoader {
 		
 		
 		//Load Articles
-		articleService.addArticle(new Article("Something Interresting", spanish));
-		articleService.addArticle(new Article("Something Boring", german));
-		articleService.addArticle(new Article("Something for Women", italian));
-		articleService.addArticle(new Article("Something for Men", german));	
+		articleService.addArticle(new Article("Something Interresting", "C_01", spanish));
+		articleService.addArticle(new Article("Something Boring", "C_02", german));
+		articleService.addArticle(new Article("Something for Women", "C_03", italian));
+		articleService.addArticle(new Article("Something for Men", "C_04", german));	
 	}	
 }

@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,17 +19,20 @@ public class Article {
 	@Column(name = "ID", unique = true)
 	private Long articleId;
 
+	@Column(name = "ARTICLE_CODE")
+	private String articleCode; //identifying same article in different languages
+	
 	@Column(name = "TITLE")
 	private String title;
 	
-	@ManyToOne
-	@JoinColumn(name = "LanguageKey")
+	@OneToOne
+	@JoinColumn(name = "LANGUAGE_KEY")
 	private Language language;
 
 	public Article() {
 	}
 
-	public Article(String title, Language language) {
+	public Article(String title, String articleCode, Language language) {
 		this.title = title;
 		this.language = language;
 	}
@@ -60,5 +63,13 @@ public class Article {
 
 	public void setArticleId(Long articleId) {
 		this.articleId = articleId;
+	}
+
+	public String getArticleCode() {
+		return articleCode;
+	}
+
+	public void setArticleCode(String articleCode) {
+		this.articleCode = articleCode;
 	}
 }
