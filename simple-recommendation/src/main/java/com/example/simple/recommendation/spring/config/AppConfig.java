@@ -17,12 +17,15 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.example.simple.recommendation.spring.entity.Article;
+import com.example.simple.recommendation.spring.entity.ArticleCategory;
+import com.example.simple.recommendation.spring.entity.Category;
+import com.example.simple.recommendation.spring.entity.Improvement;
+import com.example.simple.recommendation.spring.entity.Language;
 
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScans(value = { 
-		@ComponentScan("com.example.simple.recommendation.spring.dao"),
+@ComponentScans(value = { @ComponentScan("com.example.simple.recommendation.spring.dao"),
 		@ComponentScan("com.example.simple.recommendation.spring.service") })
 public class AppConfig {
 
@@ -50,7 +53,13 @@ public class AppConfig {
 		props.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
 
 		factoryBean.setHibernateProperties(props);
-		factoryBean.setAnnotatedClasses(Article.class);
+		factoryBean.setAnnotatedClasses(
+				Article.class,
+				ArticleCategory.class,
+				Category.class,
+				Improvement.class,
+				Language.class);
+		
 		return factoryBean;
 	}
 

@@ -14,7 +14,7 @@ import com.example.simple.recommendation.spring.entity.Article;
 public class ArticleServiceImpl implements ArticleService {
 
 	@Autowired
-	ArticleDao articleDao;
+	private ArticleDao articleDao;
 
 	@Transactional
 	@Override
@@ -27,5 +27,5 @@ public class ArticleServiceImpl implements ArticleService {
 	public List<Article> listArticles() {
 		return articleDao.listArticles();
 	}
-
+	
 }

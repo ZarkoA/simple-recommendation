@@ -1,12 +1,13 @@
 package com.example.simple.recommendation.spring.entity;
 
-import java.util.Date;
+import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,31 +15,41 @@ import javax.persistence.Table;
 public class Article {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
 
 	@Column(name = "TITLE")
 	private String title;
 	
-	@Column(name = "CATEGORY_ID")
-	private String CategoryId;
-	
-	@Column(name = "PUBLISHING_DATE")
-	private Date publishingDate;
-
-	public String getArticleTitle() {
-		return title;
-	}
-
-	public void setArticleTitle(String newArticleTitle) {
-		title = newArticleTitle;
-	}
+	@ManyToOne
+	@JoinColumn(name = "LanguageKey")
+	private Language language;
 
 	public Article() {
 	}
 
-	public Article(String articleTitle) {
-		this.title = articleTitle;
+	public Article(String title, Language language) {
+		this.title = title;
+		this.language = language;
+	}
+
+	public Article(String title) {
+		this.title = title;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String newArticleTitle) {
+		title = newArticleTitle;
 	}
 	
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
+	}
 }
