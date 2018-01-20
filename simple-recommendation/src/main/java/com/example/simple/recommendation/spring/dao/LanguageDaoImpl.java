@@ -2,7 +2,6 @@ package com.example.simple.recommendation.spring.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,7 +22,6 @@ public class LanguageDaoImpl implements LanguageDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Language> listLanguages() {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Language");
-		return query.list();
+		return sessionFactory.getCurrentSession().createQuery("from Language").list();
 	}
 }

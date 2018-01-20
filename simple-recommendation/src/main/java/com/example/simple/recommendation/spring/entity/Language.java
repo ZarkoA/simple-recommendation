@@ -14,7 +14,8 @@ public class Language {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	private long id;
+	@Column(name = "ID", unique = true)
+	private long languageId;
 
 	@Column(name = "LANGUAGE_KEY")
 	private String LanguageKey;
@@ -44,5 +45,13 @@ public class Language {
 	public Language(String LanguageKey, String description) {
 		this.LanguageKey = LanguageKey;
 		this.description = description;
+	}
+
+	public long getLanguageId() {
+		return languageId;
+	}
+
+	public void setLanguageId(long languageId) {
+		this.languageId = languageId;
 	}
 }

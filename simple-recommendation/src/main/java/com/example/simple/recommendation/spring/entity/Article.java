@@ -16,7 +16,8 @@ public class Article {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	private Long id;
+	@Column(name = "ID", unique = true)
+	private Long articleId;
 
 	@Column(name = "TITLE")
 	private String title;
@@ -51,5 +52,13 @@ public class Article {
 
 	public void setLanguage(Language language) {
 		this.language = language;
+	}
+
+	public Long getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(Long articleId) {
+		this.articleId = articleId;
 	}
 }
