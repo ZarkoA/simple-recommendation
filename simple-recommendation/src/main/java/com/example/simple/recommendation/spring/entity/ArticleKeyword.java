@@ -22,7 +22,7 @@ public class ArticleKeyword {
 	@Column(name = "KEYWORD")
 	private String keyword;
 	
-	@ManyToOne
+	@ManyToOne //
 	@JoinColumn(name = "ID")
 	private Article article;
 
