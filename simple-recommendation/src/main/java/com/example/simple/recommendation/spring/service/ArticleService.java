@@ -9,5 +9,6 @@ public interface ArticleService {
 
 	void addArticle(Article article);
 	List<Article> listArticles();
-	List<Language> listMissingLanguages(String articleCode);
+	Article getArticle(long articleId);
+	List<Language> listMissingLanguages(Article article);
 }

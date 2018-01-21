@@ -9,8 +9,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.example.simple.recommendation.database.DataLoader;
 import com.example.simple.recommendation.spring.config.AppConfig;
 import com.example.simple.recommendation.spring.entity.Article;
+import com.example.simple.recommendation.spring.entity.Category;
 import com.example.simple.recommendation.spring.entity.Language;
+import com.example.simple.recommendation.spring.service.ArticleKeywordService;
 import com.example.simple.recommendation.spring.service.ArticleService;
+import com.example.simple.recommendation.spring.service.CategoryService;
 import com.example.simple.recommendation.spring.service.LanguageService;
 
 @SpringBootApplication
@@ -20,6 +23,8 @@ public class SimpleRecommendationApplication {
 
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		ArticleService articleService = context.getBean(ArticleService.class);
+		ArticleKeywordService articleKeywordService = context.getBean(ArticleKeywordService.class);
+		CategoryService categoryService = context.getBean(CategoryService.class);
 		LanguageService languageService = context.getBean(LanguageService.class);
 		DataLoader loader = new DataLoader(context);
 
@@ -41,13 +46,30 @@ public class SimpleRecommendationApplication {
 			System.out.println("Language = " + language.getLanguageKey() + ", " + language.getDescription());
 			System.out.println();
 		}
-		
-		List<Language> missingLanguages = articleService.listMissingLanguages("C_01");
-		for(Language missingLanguage : missingLanguages) {
+
+		Article article = articleService.getArticle(3);
+		List<Language> missingLanguages = articleService.listMissingLanguages(article);
+
+		for (Language missingLanguage : missingLanguages) {
 			System.out.println("Missing Languages");
-			System.out.println("Languages missing for an Article: " + missingLanguage.getLanguageKey());
+			System.out.println("Languages missing for an Article Code: " + article.getArticleCode() + " -> "
+					+ missingLanguage.getLanguageKey());
 		}
-		
+
+		int keywordCount = articleKeywordService.getArticleKeywordCount(article.getArticleId());
+		System.out.println("Keyword count for the Article " + article.getTitle() + " is: " + keywordCount);
+
+		List<Category> categories = categoryService.listCategories();
+
+		for (Category category : categories) {
+			List<Article> categoryArticles = category.getArticles();
+			System.out.println("Printing articles for category " + category.getTitle());
+
+			for (Article categoryArticle : categoryArticles) {
+				System.out.println(categoryArticle.getTitle());
+			}
+		}
+
 		context.close();
 
 		SpringApplication.run(SimpleRecommendationApplication.class, args);

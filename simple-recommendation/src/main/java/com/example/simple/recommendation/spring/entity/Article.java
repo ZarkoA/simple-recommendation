@@ -7,8 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "ARTICLE")
@@ -31,6 +35,12 @@ public class Article {
 	
 	@Column(name = "CONTENT")
 	private String content;
+	
+	@ManyToOne
+	@Cascade({CascadeType.ALL})
+	@JoinColumn(name = "CATEGORY_ID")
+	private Category category;
+	
 
 	public String getTitle() {
 		return title;
@@ -75,10 +85,11 @@ public class Article {
 	public Article() {
 	}
 
-	public Article(String title, String articleCode, Language language, String content) {
+	public Article(String title, String articleCode, Language language, String content, Category category) {
 		this.title = title;
 		this.articleCode = articleCode;
 		this.language = language;
 		this.content = content;
+		this.category = category;
 	}
 }

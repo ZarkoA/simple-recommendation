@@ -31,7 +31,13 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Transactional
 	@Override
-	public List<Language> listMissingLanguages(String articleCode) {
-		return articleDao.listMissingLanguages(articleCode);
+	public Article getArticle(long articleId) {
+		return articleDao.getArticle(articleId);
+	}
+
+	@Transactional
+	@Override
+	public List<Language> listMissingLanguages(Article article) {
+		return articleDao.listMissingLanguages(article);
 	}
 }

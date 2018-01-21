@@ -23,7 +23,7 @@ public class ArticleKeyword {
 	private String keyword;
 	
 	@ManyToOne
-	@JoinColumn(name = "ARTICLE_CODE")
+	@JoinColumn(name = "ARTICLE_ID")
 	private Article article;
 
 	public Long getArticleKeywordId() {

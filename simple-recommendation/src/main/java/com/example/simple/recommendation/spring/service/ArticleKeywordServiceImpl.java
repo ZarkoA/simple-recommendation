@@ -24,6 +24,12 @@ public class ArticleKeywordServiceImpl implements ArticleKeywordService {
 
 	@Transactional
 	@Override
+	public int getArticleKeywordCount(long articleId) {
+		return articleKeywordDao.getArticleKeywordCount(articleId);
+	}
+
+	@Transactional
+	@Override
 	public List<ArticleKeyword> listArticleKeywords() {
 		return articleKeywordDao.listArticleKeywords();
 	}

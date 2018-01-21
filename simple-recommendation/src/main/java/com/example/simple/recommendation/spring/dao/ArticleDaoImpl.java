@@ -27,11 +27,22 @@ public class ArticleDaoImpl implements ArticleDao {
 		return sessionFactory.getCurrentSession().createQuery("from Article").list();
 	}
 	
+	@Override
+	public Article getArticle(long articleId) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Article where articleId = :articleId");
+		query.setParameter("articleId", articleId);
+		return (Article) query.uniqueResult();
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Language> listMissingLanguages(String articleCode) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Language as L where L.languageKey not in (select A.language.languageKey from Article as A where A.language = L and A.articleCode = :articleCode)");
-		query.setParameter("articleCode", articleCode);
+	public List<Language> listMissingLanguages(Article article) {
+
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"from Language as L where L.languageKey not in (select A.language.languageKey from Article as A where A.language = L and A.articleCode = :articleCode)");
+		query.setParameter("articleCode", article.getArticleCode());
+		
 		return query.list();
 	}
+
 }

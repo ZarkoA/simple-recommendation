@@ -17,7 +17,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.example.simple.recommendation.spring.entity.Article;
-import com.example.simple.recommendation.spring.entity.ArticleCategory;
+import com.example.simple.recommendation.spring.entity.ArticleKeyword;
 import com.example.simple.recommendation.spring.entity.Category;
 import com.example.simple.recommendation.spring.entity.Improvement;
 import com.example.simple.recommendation.spring.entity.Language;
@@ -55,7 +55,7 @@ public class AppConfig {
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setAnnotatedClasses(
 				Article.class,
-				ArticleCategory.class,
+				ArticleKeyword.class,
 				Category.class,
 				Improvement.class,
 				Language.class);
