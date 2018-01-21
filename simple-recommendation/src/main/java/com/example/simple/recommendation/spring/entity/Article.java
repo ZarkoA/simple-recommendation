@@ -32,18 +32,6 @@ public class Article {
 	@Column(name = "CONTENT")
 	private String content;
 
-	public Article() {
-	}
-
-	public Article(String title, String articleCode, Language language, String content) {
-		this.title = title;
-		this.language = language;
-	}
-
-	public Article(String title) {
-		this.title = title;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -82,5 +70,13 @@ public class Article {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public Article() {
+	}
+
+	public Article(String title, String articleCode, Language language, String content) {
+		this.title = title;
+		this.language = language;
 	}
 }
