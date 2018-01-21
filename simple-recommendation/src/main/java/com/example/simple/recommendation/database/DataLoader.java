@@ -3,6 +3,7 @@ package com.example.simple.recommendation.database;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.example.simple.recommendation.spring.entity.Article;
+import com.example.simple.recommendation.spring.entity.ArticleCategory;
 import com.example.simple.recommendation.spring.entity.Language;
 import com.example.simple.recommendation.spring.service.ArticleCategoryService;
 import com.example.simple.recommendation.spring.service.ArticleService;
@@ -56,6 +57,6 @@ public class DataLoader {
 		articleService.addArticle(new Article("About Fashion", "C_04", german, "Fashion Today..."));
 		
 		//Load Article Categories
-		
+		articleCategoryService.addArticleCategory(new ArticleCategory());
 	}	
 }

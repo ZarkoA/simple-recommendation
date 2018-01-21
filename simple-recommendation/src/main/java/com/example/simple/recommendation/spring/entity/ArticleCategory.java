@@ -23,6 +23,9 @@ public class ArticleCategory {
 	@JoinColumn(name = "ARTICLE_CODE")
 	private Article article;
 	
+	@Column(name = "CATEGORY_TITLE")
+	private String categoryTitle;
+	
 	public long getArticleCategoryId() {
 		return articleCategoryId;
 	}
@@ -37,5 +40,21 @@ public class ArticleCategory {
 
 	public void setArticle(Article article) {
 		this.article = article;
+	}
+	
+	public String getCategoryTitle() {
+		return categoryTitle;
+	}
+
+	public void setCategoryTitle(String categoryTitle) {
+		this.categoryTitle = categoryTitle;
+	}
+
+	public ArticleCategory() {
+	}
+	
+	public ArticleCategory(Article article, String categoryTitle) {
+		this.article = article;
+		this.categoryTitle = categoryTitle;
 	}
 }

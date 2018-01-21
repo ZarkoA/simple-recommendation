@@ -82,4 +82,18 @@ public class Improvement {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public Improvement() {
+	}
+	
+	public Improvement(long improvementId, String languageKey, long contentLength, int contentKeywordNumber,
+			int descriptionKeywordNumber, Category category) {
+		super();
+		this.improvementId = improvementId;
+		this.languageKey = languageKey;
+		this.contentLength = contentLength;
+		this.contentKeywordNumber = contentKeywordNumber;
+		this.descriptionKeywordNumber = descriptionKeywordNumber;
+		this.category = category;
+	}
 }

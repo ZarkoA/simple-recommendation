@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CATEGORY")
 public class Category {
-	
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID", unique = true)
@@ -20,18 +20,20 @@ public class Category {
 	@Column(name = "TITLE")
 	private String title;
 	
-	public Category() {
-	}
-	
-	public Category(String newTitle) {
-		title = newTitle;
-	}
-
 	public String getTitle() {
 		return title;
 	}
 
 	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public Category() {
+	}
+	
+	public Category(long categoryId, String title) {
+		super();
+		this.categoryId = categoryId;
 		this.title = title;
 	}
 }
