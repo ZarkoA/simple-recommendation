@@ -39,11 +39,6 @@ public class Language {
 		this.description = description;
 	}
 
-	public Language(String languageKey, String description) {
-		this.languageKey = languageKey;
-		this.description = description;
-	}
-
 	public long getLanguageId() {
 		return languageId;
 	}
@@ -55,9 +50,7 @@ public class Language {
 	public Language() {
 	}
 
-	public Language(long languageId, String languageKey, String description) {
-		super();
-		this.languageId = languageId;
+	public Language(String languageKey, String description) {
 		this.languageKey = languageKey;
 		this.description = description;
 	}

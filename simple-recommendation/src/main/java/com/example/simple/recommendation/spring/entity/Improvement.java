@@ -19,8 +19,9 @@ public class Improvement {
 	@Column(name = "ID", unique = true)
 	private long improvementId;
 	
-	@Column
-	private String languageKey;
+	@OneToOne
+	@JoinColumn(name = "LANGUAGE_KEY")
+	private Language language;
 	
 	@Column
 	private long contentLength;
@@ -43,12 +44,12 @@ public class Improvement {
 		this.improvementId = improvementId;
 	}
 
-	public String getLanguageKey() {
-		return languageKey;
+	public Language getLanguage() {
+		return language;
 	}
 
-	public void setLanguageKey(String languageKey) {
-		this.languageKey = languageKey;
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 	public long getContentLength() {
@@ -86,11 +87,10 @@ public class Improvement {
 	public Improvement() {
 	}
 	
-	public Improvement(long improvementId, String languageKey, long contentLength, int contentKeywordNumber,
+	public Improvement(Language language, long contentLength, int contentKeywordNumber,
 			int descriptionKeywordNumber, Category category) {
-		super();
-		this.improvementId = improvementId;
-		this.languageKey = languageKey;
+		
+		this.language = language;
 		this.contentLength = contentLength;
 		this.contentKeywordNumber = contentKeywordNumber;
 		this.descriptionKeywordNumber = descriptionKeywordNumber;

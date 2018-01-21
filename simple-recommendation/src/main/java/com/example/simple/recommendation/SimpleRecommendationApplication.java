@@ -28,8 +28,9 @@ public class SimpleRecommendationApplication {
 		List<Article> articles = articleService.listArticles();
 
 		for (Article article : articles) {
-			System.out.println("Printing Article Titles");
 			System.out.println("Article Title = " + article.getTitle());
+			System.out.println("Article Language = " + article.getLanguage().getLanguageKey());
+			System.out.println("Article Code = " + article.getArticleCode());
 			System.out.println();
 		}
 
@@ -40,7 +41,13 @@ public class SimpleRecommendationApplication {
 			System.out.println("Language = " + language.getLanguageKey() + ", " + language.getDescription());
 			System.out.println();
 		}
-
+		
+		List<Language> missingLanguages = articleService.listMissingLanguages("C_01");
+		for(Language missingLanguage : missingLanguages) {
+			System.out.println("Missing Languages");
+			System.out.println("Languages missing for an Article: " + missingLanguage.getLanguageKey());
+		}
+		
 		context.close();
 
 		SpringApplication.run(SimpleRecommendationApplication.class, args);

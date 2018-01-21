@@ -31,9 +31,7 @@ public class Category {
 	public Category() {
 	}
 	
-	public Category(long categoryId, String title) {
-		super();
-		this.categoryId = categoryId;
+	public Category(String title) {
 		this.title = title;
 	}
 }

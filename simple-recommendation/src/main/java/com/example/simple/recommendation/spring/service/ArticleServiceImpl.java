@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.simple.recommendation.spring.dao.ArticleDao;
 import com.example.simple.recommendation.spring.entity.Article;
+import com.example.simple.recommendation.spring.entity.Language;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -27,5 +28,10 @@ public class ArticleServiceImpl implements ArticleService {
 	public List<Article> listArticles() {
 		return articleDao.listArticles();
 	}
-	
+
+	@Transactional
+	@Override
+	public List<Language> listMissingLanguages(String articleCode) {
+		return articleDao.listMissingLanguages(articleCode);
+	}
 }

@@ -77,6 +77,8 @@ public class Article {
 
 	public Article(String title, String articleCode, Language language, String content) {
 		this.title = title;
+		this.articleCode = articleCode;
 		this.language = language;
+		this.content = content;
 	}
 }

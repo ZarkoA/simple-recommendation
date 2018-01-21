@@ -3,6 +3,9 @@ package com.example.simple.recommendation.database;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.example.simple.recommendation.spring.entity.Article;
+import com.example.simple.recommendation.spring.entity.ArticleKeyword;
+import com.example.simple.recommendation.spring.entity.Category;
+import com.example.simple.recommendation.spring.entity.Improvement;
 import com.example.simple.recommendation.spring.entity.Language;
 import com.example.simple.recommendation.spring.service.ArticleCategoryService;
 import com.example.simple.recommendation.spring.service.ArticleService;
@@ -34,27 +37,34 @@ public class DataLoader {
 		
 		Language english = new Language("EN", "English");
 		Language german = new Language("DE", "German");
-		Language french = new Language("FR", "French");
-		Language italian = new Language("IT", "Italian");
-		Language spanish = new Language("ES", "Spanish");
+		Language croatian = new Language("HR", "Croatian");
 		
-		Article sportSpanish = new Article("Deporte", "C_01", spanish, "El deporte es genial...");
+		Article sportEnglish = new Article("Sports", "C_01", english, "Sport is good...");
+		Article sportGerman = new Article("Sports", "C_01", german, "Sport ist super...");
+		Article newsEnglish = new Article("News", "C_02", english, "Todays News...");
 		Article newsGerman = new Article("Nachrichten", "C_02", german, "Heutige Nachrichten...");
-		Article weatherItalien = new Article("Tempo", "C_03", italian, "Oggi sarà soleggiato...");
-		Article computersGerman = new Article("About Computers", "C_04", german, "Über Computer...");
-		Article fashionGerman = new Article("About Fashion", "C_04", german, "Fashion Today...");
 		
+		ArticleKeyword footballEnglish = new ArticleKeyword("Football", sportEnglish);
+		ArticleKeyword basketballEnglish = new ArticleKeyword("Basketball", sportEnglish);
+		ArticleKeyword golfEnglish = new ArticleKeyword("Golf", sportEnglish);
+
+		ArticleKeyword fußballGerman = new ArticleKeyword("Fußball", sportGerman);
+		ArticleKeyword basketballGerman = new ArticleKeyword("Basketball", sportGerman);
+		ArticleKeyword golfGerman = new ArticleKeyword("Golf", sportGerman);
+		
+		Category sport = new Category("Sport");
+		Category news = new Category("News");
+		
+		Improvement sportImprovement = new Improvement(english, 256, 5, 5, sport);
+
 		languageService.addLanguage(english);
 		languageService.addLanguage(german);
-		languageService.addLanguage(french);
-		languageService.addLanguage(italian);
-		languageService.addLanguage(spanish);
+		languageService.addLanguage(croatian);
 		
-		articleService.addArticle(sportSpanish);
+		articleService.addArticle(sportEnglish);
+		articleService.addArticle(sportGerman);
+		articleService.addArticle(newsEnglish);
 		articleService.addArticle(newsGerman);
-		articleService.addArticle(weatherItalien);
-		articleService.addArticle(computersGerman);
-		articleService.addArticle(fashionGerman);
 		
 		
 	}	
