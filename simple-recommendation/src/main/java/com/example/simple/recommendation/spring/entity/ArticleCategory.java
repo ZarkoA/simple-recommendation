@@ -23,10 +23,6 @@ public class ArticleCategory {
 	@JoinColumn(name = "ARTICLE_CODE")
 	private Article article;
 	
-	@OneToOne
-	@JoinColumn(name = "ID")
-	private Category category;
-	
 	public long getArticleCategoryId() {
 		return articleCategoryId;
 	}
@@ -41,13 +37,5 @@ public class ArticleCategory {
 
 	public void setArticle(Article article) {
 		this.article = article;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 }

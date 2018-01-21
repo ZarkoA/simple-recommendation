@@ -38,9 +38,13 @@ public class DataLoader {
 		
 		
 		//Load Articles
-		articleService.addArticle(new Article("Something Interresting", "C_01", spanish));
-		articleService.addArticle(new Article("Something Boring", "C_02", german));
-		articleService.addArticle(new Article("Something for Women", "C_03", italian));
-		articleService.addArticle(new Article("Something for Men", "C_04", german));	
+		articleService.addArticle(new Article("Deporte", "C_01", spanish, "El deporte es genial..."));
+		articleService.addArticle(new Article("Nachrichten", "C_02", german, "Heutige Nachrichten..."));
+		articleService.addArticle(new Article("Tempo", "C_03", italian, "Oggi sarà soleggiato..."));
+		articleService.addArticle(new Article("About Computers", "C_04", german, "Über Computer..."));
+		articleService.addArticle(new Article("About Fashion", "C_04", german, "Fashion Today..."));
+		
+		//Load Article Categories
+		
 	}	
 }

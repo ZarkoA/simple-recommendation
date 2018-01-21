@@ -28,11 +28,14 @@ public class Article {
 	@OneToOne
 	@JoinColumn(name = "LANGUAGE_KEY")
 	private Language language;
+	
+	@Column(name = "CONTENT")
+	private String content;
 
 	public Article() {
 	}
 
-	public Article(String title, String articleCode, Language language) {
+	public Article(String title, String articleCode, Language language, String content) {
 		this.title = title;
 		this.language = language;
 	}
@@ -71,5 +74,13 @@ public class Article {
 
 	public void setArticleCode(String articleCode) {
 		this.articleCode = articleCode;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 }
