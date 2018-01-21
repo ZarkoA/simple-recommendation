@@ -4,7 +4,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.example.simple.recommendation.spring.entity.Article;
 import com.example.simple.recommendation.spring.entity.Language;
+import com.example.simple.recommendation.spring.service.ArticleCategoryService;
 import com.example.simple.recommendation.spring.service.ArticleService;
+import com.example.simple.recommendation.spring.service.CategoryService;
+import com.example.simple.recommendation.spring.service.ImprovementService;
 import com.example.simple.recommendation.spring.service.LanguageService;
 
 public class DataLoader {
@@ -12,11 +15,19 @@ public class DataLoader {
 	private AnnotationConfigApplicationContext context;
 	private ArticleService articleService;
 	private LanguageService languageService;
+	private CategoryService categoryService;
+	private ArticleCategoryService articleCategoryService;
+	private ImprovementService improvementService;
 	
 	public DataLoader(AnnotationConfigApplicationContext newContext) {
+		
 		context = newContext;
+		
 		articleService = context.getBean(ArticleService.class);
 		languageService = context.getBean(LanguageService.class);
+		categoryService = context.getBean(CategoryService.class);
+		articleCategoryService = context.getBean(ArticleCategoryService.class);
+		improvementService = context.getBean(ImprovementService.class);
 	};
 	
 	public void loadData() {
