@@ -6,22 +6,22 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.simple.recommendation.spring.entity.Improvement;
+import com.example.simple.recommendation.spring.entity.ArticleMeta;
 
 @Repository
-public class ImprovementDaoImpl implements ImprovementDao {
+public class ArticleMetaDaoImpl implements ArticleMetaDao {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void addImprovement(Improvement improvement) {
+	public void addImprovement(ArticleMeta improvement) {
 		sessionFactory.getCurrentSession().save(improvement);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Improvement> listImprovements() {
-		return sessionFactory.getCurrentSession().createQuery("from Improvement").list();
+	public List<ArticleMeta> listImprovements() {
+		return sessionFactory.getCurrentSession().createQuery("from ArticleMeta").list();
 	}
 }

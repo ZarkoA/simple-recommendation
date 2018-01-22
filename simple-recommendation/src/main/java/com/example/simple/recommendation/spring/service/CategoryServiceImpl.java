@@ -22,9 +22,20 @@ public class CategoryServiceImpl implements CategoryService {
 		categoryDao.addCategory(category);
 	}
 
+	@Override
+	public Category getCategoryById(long categoryId) {
+		return categoryDao.getCategoryById(categoryId);
+	}
+	
+	@Override
+	public Category getCategoryByTitle(String categoryTitle) {
+		return categoryDao.getCategoryByTitle(categoryTitle);
+	}
+
 	@Transactional
 	@Override
 	public List<Category> listCategories() {
 		return categoryDao.listCategories();
 	}
+
 }

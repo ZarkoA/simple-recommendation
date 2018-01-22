@@ -7,5 +7,6 @@ import com.example.simple.recommendation.spring.entity.Language;
 public interface LanguageDao {
 
 	void add(Language language);
+	Language getLanguageByKey(String languageKey);
 	List<Language> listLanguages();
 }

@@ -32,7 +32,7 @@ public class ArticleServiceImpl implements ArticleService {
 	@Transactional
 	@Override
 	public Article getArticle(long articleId) {
-		return articleDao.getArticle(articleId);
+		return articleDao.getArticleById(articleId);
 	}
 
 	@Transactional

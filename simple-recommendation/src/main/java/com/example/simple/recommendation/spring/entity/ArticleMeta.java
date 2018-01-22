@@ -11,8 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "IMPROVEMENT")
-public class Improvement {
+@Table(name = "ARTICLE_META")
+public class ArticleMeta {
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -27,13 +27,13 @@ public class Improvement {
 	private long contentLength;
 	
 	@Column
-	private int contentKeywordNumber;
+	private int keywordsInArticle;
 	
 	@Column
-	private int descriptionKeywordNumber;
+	private int keywordsSpecifiedNumber;
 	
 	@OneToOne
-	@JoinColumn(name = "ID")
+	@JoinColumn(name = "ID", unique = true)
 	private Category category;
 
 	public long getImprovementId() {
@@ -60,20 +60,20 @@ public class Improvement {
 		this.contentLength = contentLength;
 	}
 
-	public int getContentKeywordNumber() {
-		return contentKeywordNumber;
+	public int getKeywordsInArticle() {
+		return keywordsInArticle;
 	}
 
-	public void setContentKeywordNumber(int contentKeywordNumber) {
-		this.contentKeywordNumber = contentKeywordNumber;
+	public void setKeywordsInArticle(int keywordsInArticle) {
+		this.keywordsInArticle = keywordsInArticle;
 	}
 
-	public int getDescriptionKeywordNumber() {
-		return descriptionKeywordNumber;
+	public int getKeywordsSpecifiedNumber() {
+		return keywordsSpecifiedNumber;
 	}
 
-	public void setDescriptionKeywordNumber(int descriptionKeywordNumber) {
-		this.descriptionKeywordNumber = descriptionKeywordNumber;
+	public void setKeywordsSpecifiedNumber(int keywordsSpecifiedNumber) {
+		this.keywordsSpecifiedNumber = keywordsSpecifiedNumber;
 	}
 
 	public Category getCategory() {
@@ -84,16 +84,20 @@ public class Improvement {
 		this.category = category;
 	}
 
-	public Improvement() {
+	public ArticleMeta() {
 	}
 	
-	public Improvement(Language language, long contentLength, int contentKeywordNumber,
-			int descriptionKeywordNumber, Category category) {
+	public ArticleMeta(
+			Language language, 
+			long contentLength, 
+			int keywordsInArticle,
+			int keywordsSpecifiedNumber, 
+			Category category) {
 		
 		this.language = language;
 		this.contentLength = contentLength;
-		this.contentKeywordNumber = contentKeywordNumber;
-		this.descriptionKeywordNumber = descriptionKeywordNumber;
+		this.keywordsInArticle = keywordsInArticle;
+		this.keywordsSpecifiedNumber = keywordsSpecifiedNumber;
 		this.category = category;
 	}
 }

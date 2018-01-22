@@ -11,9 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 @Entity
 @Table(name = "ARTICLE")
 public class Article {
@@ -37,10 +34,15 @@ public class Article {
 	private String content;
 	
 	@ManyToOne
-	@Cascade({CascadeType.ALL})
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
 	
+	/*
+	 * Should be counted differently. 
+	 * Here only for a demonstration purpose
+	*/
+	@Column(name = "KEYWORD_NUMBER")
+	private int keywordsInArticle;
 
 	public String getTitle() {
 		return title;
@@ -82,14 +84,23 @@ public class Article {
 		this.content = content;
 	}
 	
+	public int getKeyworsInArticle() {
+		return keywordsInArticle;
+	}
+
+	public void setKeywordsInArticle(int keywordsInArticle) {
+		this.keywordsInArticle = keywordsInArticle;
+	}
+
 	public Article() {
 	}
 
-	public Article(String title, String articleCode, Language language, String content, Category category) {
+	public Article(String title, String articleCode, Language language, String content, Category category, int keywordsInArticle) {
 		this.title = title;
 		this.articleCode = articleCode;
 		this.language = language;
 		this.content = content;
 		this.category = category;
+		this.keywordsInArticle = keywordsInArticle;
 	}
 }

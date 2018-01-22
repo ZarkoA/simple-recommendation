@@ -7,24 +7,24 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.simple.recommendation.spring.dao.ImprovementDao;
-import com.example.simple.recommendation.spring.entity.Improvement;
+import com.example.simple.recommendation.spring.dao.ArticleMetaDao;
+import com.example.simple.recommendation.spring.entity.ArticleMeta;
 
 @Service
-public class ImprovementServiceImpl implements ImprovementService {
+public class ArticleMetaServiceImpl implements ArticleMetaService {
 
 	@Autowired
-	private ImprovementDao improvementDao;
+	private ArticleMetaDao improvementDao;
 	
 	@Transactional
 	@Override
-	public void addImprovement(Improvement improvement) {
+	public void addImprovement(ArticleMeta improvement) {
 		improvementDao.addImprovement(improvement);
 	}
 
 	@Transactional
 	@Override
-	public List<Improvement> listImprovements() {
+	public List<ArticleMeta> listImprovements() {
 		return improvementDao.listImprovements();
 	}
 

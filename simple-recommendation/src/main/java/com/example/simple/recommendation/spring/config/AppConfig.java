@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.example.simple.recommendation.spring.entity.Article;
 import com.example.simple.recommendation.spring.entity.ArticleKeyword;
 import com.example.simple.recommendation.spring.entity.Category;
-import com.example.simple.recommendation.spring.entity.Improvement;
+import com.example.simple.recommendation.spring.entity.ArticleMeta;
 import com.example.simple.recommendation.spring.entity.Language;
 
 @Configuration
@@ -57,7 +57,7 @@ public class AppConfig {
 				Article.class,
 				ArticleKeyword.class,
 				Category.class,
-				Improvement.class,
+				ArticleMeta.class,
 				Language.class);
 		
 		return factoryBean;

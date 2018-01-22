@@ -9,6 +9,6 @@ public interface ArticleDao {
 	
 	void add(Article article);
 	List<Article> listArticles();
-	Article getArticle(long articleId);
+	Article getArticleById(long articleId);
 	public List<Language> listMissingLanguages(Article article);
 }

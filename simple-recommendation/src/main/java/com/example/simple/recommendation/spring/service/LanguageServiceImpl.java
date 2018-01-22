@@ -24,7 +24,14 @@ public class LanguageServiceImpl implements LanguageService {
 
 	@Transactional
 	@Override
+	public Language getLanguageByKey(String languageKey) {
+		return languageDao.getLanguageByKey(languageKey);
+	}
+
+	@Transactional
+	@Override
 	public List<Language> listLanguages() {
 		return languageDao.listLanguages();
 	}
+
 }

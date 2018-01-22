@@ -28,7 +28,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	}
 	
 	@Override
-	public Article getArticle(long articleId) {
+	public Article getArticleById(long articleId) {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Article where articleId = :articleId");
 		query.setParameter("articleId", articleId);
 		return (Article) query.uniqueResult();
