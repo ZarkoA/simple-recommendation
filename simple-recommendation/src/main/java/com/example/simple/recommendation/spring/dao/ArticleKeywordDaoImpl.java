@@ -30,8 +30,18 @@ public class ArticleKeywordDaoImpl implements ArticleKeywordDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ArticleKeyword> listArticleKeywords() {
+	public List<ArticleKeyword> listAllKeywords() {
 		return sessionFactory.getCurrentSession().createQuery("from ArticleKeyword").list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ArticleKeyword> listArticleKeywords(long articleId) {
+
+		Query query = sessionFactory.getCurrentSession().createQuery("from ArticleKeyword as AK where AK.article.articleid = :articleId");
+		query.setParameter("articleId", articleId);
+		
+		return query.list();
 	}
 
 }

@@ -8,5 +8,6 @@ public interface ArticleKeywordDao {
 
 	void addArticleKeyword(ArticleKeyword articleKeyword);
 	int getArticleKeywordCount(long articleId);
-	List<ArticleKeyword> listArticleKeywords();
+	List<ArticleKeyword> listAllKeywords();
+	List<ArticleKeyword> listArticleKeywords(long articleId);
 }

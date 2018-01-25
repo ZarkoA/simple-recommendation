@@ -18,15 +18,22 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.example.simple.recommendation.spring.entity.Article;
 import com.example.simple.recommendation.spring.entity.ArticleKeyword;
-import com.example.simple.recommendation.spring.entity.Category;
 import com.example.simple.recommendation.spring.entity.ArticleMeta;
+import com.example.simple.recommendation.spring.entity.Category;
 import com.example.simple.recommendation.spring.entity.Language;
+import com.example.simple.recommendation.spring.service.ArticleKeywordService;
+import com.example.simple.recommendation.spring.service.ArticleMetaService;
+import com.example.simple.recommendation.spring.service.ArticleService;
+import com.example.simple.recommendation.spring.service.CategoryService;
+import com.example.simple.recommendation.spring.service.LanguageService;
 
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScans(value = { @ComponentScan("com.example.simple.recommendation.spring.dao"),
-		@ComponentScan("com.example.simple.recommendation.spring.service") })
+@ComponentScans(value = { 
+		@ComponentScan("com.example.simple.recommendation.spring.dao"),
+		@ComponentScan("com.example.simple.recommendation.spring.service"),
+		@ComponentScan("com.example.simple.recommendation.spring.database")})
 public class AppConfig {
 
 	@Autowired
@@ -35,6 +42,7 @@ public class AppConfig {
 	@Bean
 	public DataSource getDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
+		
 		dataSource.setDriverClassName(env.getProperty("db.driver"));
 		dataSource.setUrl(env.getProperty("db.url"));
 		dataSource.setUsername(env.getProperty("db.username"));
@@ -55,11 +63,16 @@ public class AppConfig {
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setAnnotatedClasses(
 				Article.class,
+				ArticleMetaService.class,
+				ArticleService.class,
 				ArticleKeyword.class,
+				ArticleKeywordService.class,
 				Category.class,
+				CategoryService.class,
 				ArticleMeta.class,
-				Language.class);
-		
+				Language.class,
+				LanguageService.class);
+
 		return factoryBean;
 	}
 

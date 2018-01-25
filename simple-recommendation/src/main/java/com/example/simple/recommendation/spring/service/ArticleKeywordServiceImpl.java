@@ -30,7 +30,13 @@ public class ArticleKeywordServiceImpl implements ArticleKeywordService {
 
 	@Transactional
 	@Override
-	public List<ArticleKeyword> listArticleKeywords() {
-		return articleKeywordDao.listArticleKeywords();
+	public List<ArticleKeyword> listAllKeywords() {
+		return articleKeywordDao.listAllKeywords();
+	}
+
+	@Transactional
+	@Override
+	public List<ArticleKeyword> listArticleKeywords(long articleId) {
+		return articleKeywordDao.listArticleKeywords(articleId);
 	}
 }

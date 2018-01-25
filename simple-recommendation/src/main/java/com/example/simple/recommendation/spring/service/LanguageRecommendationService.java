@@ -1,16 +1,22 @@
 package com.example.simple.recommendation.spring.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.simple.recommendation.LanguageRecommendation;
 import com.example.simple.recommendation.Recommendable;
 import com.example.simple.recommendation.spring.entity.Article;
 
+@Service
 public class LanguageRecommendationService implements RecommendationService {
-
+	
 	@Override
-	public void recommend(Article article, Recommendable recommendable) {
-		// TODO Auto-generated method stub
-		
-	}
+	public List<String> recommend(Article article, Recommendable recommendable) {
 
-	
-	
+		LanguageRecommendation languageRecommendation = (LanguageRecommendation) recommendable;
+		List<String> recommendedLanguages = languageRecommendation.recommend(article);
+		
+		return recommendedLanguages;
+	}
 }

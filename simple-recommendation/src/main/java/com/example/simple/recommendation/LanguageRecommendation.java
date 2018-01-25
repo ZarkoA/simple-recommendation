@@ -26,4 +26,8 @@ public class LanguageRecommendation implements Recommendable {
 		
 		return missingLanguages;
 	}
+	
+	public String recommend(){
+		return "Hello from recommend()";
+	}
  }
