@@ -14,18 +14,18 @@ import com.example.simple.recommendation.spring.entity.ArticleMeta;
 public class ArticleMetaServiceImpl implements ArticleMetaService {
 
 	@Autowired
-	private ArticleMetaDao improvementDao;
+	private ArticleMetaDao articleMataDao;
 	
 	@Transactional
 	@Override
-	public void addImprovement(ArticleMeta improvement) {
-		improvementDao.addImprovement(improvement);
+	public void addArticleMeta(ArticleMeta articleMeta) {
+		articleMataDao.addArticleMeta(articleMeta);
 	}
 
 	@Transactional
 	@Override
-	public List<ArticleMeta> listImprovements() {
-		return improvementDao.listImprovements();
+	public List<ArticleMeta> listArticleMetas() {
+		return articleMataDao.listArticleMetas();
 	}
 
 }

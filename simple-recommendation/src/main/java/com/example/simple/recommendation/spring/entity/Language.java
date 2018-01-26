@@ -17,7 +17,7 @@ public class Language {
 	@Column(name = "ID", unique = true)
 	private long languageId;
 
-	@Column(name = "LANGUAGE_KEY")
+	@Column(name = "LANGUAGE_KEY", unique = true)
 	private String languageKey;
 
 	@Column(name = "DESCRIPTION")

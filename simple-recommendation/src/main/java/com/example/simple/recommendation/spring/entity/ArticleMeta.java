@@ -17,7 +17,7 @@ public class ArticleMeta {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID", unique = true)
-	private long improvementId;
+	private long articleMetaId;
 	
 	@OneToOne
 	@JoinColumn(name = "LANGUAGE_KEY")
@@ -36,12 +36,12 @@ public class ArticleMeta {
 	@JoinColumn(name = "ID", unique = true)
 	private Category category;
 
-	public long getImprovementId() {
-		return improvementId;
+	public long getArticleMetaId() {
+		return articleMetaId;
 	}
 
-	public void setImprovementId(long improvementId) {
-		this.improvementId = improvementId;
+	public void setArticleMetaId(long articleMetaId) {
+		this.articleMetaId = articleMetaId;
 	}
 
 	public Language getLanguage() {

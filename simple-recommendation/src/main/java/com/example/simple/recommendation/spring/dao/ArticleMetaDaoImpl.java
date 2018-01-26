@@ -15,13 +15,13 @@ public class ArticleMetaDaoImpl implements ArticleMetaDao {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void addImprovement(ArticleMeta improvement) {
-		sessionFactory.getCurrentSession().save(improvement);
+	public void addArticleMeta(ArticleMeta articleMeta) {
+		sessionFactory.getCurrentSession().save(articleMeta);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ArticleMeta> listImprovements() {
+	public List<ArticleMeta> listArticleMetas() {
 		return sessionFactory.getCurrentSession().createQuery("from ArticleMeta").list();
 	}
 }

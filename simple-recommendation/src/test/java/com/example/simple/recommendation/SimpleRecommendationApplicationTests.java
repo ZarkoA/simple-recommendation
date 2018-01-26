@@ -1,17 +1,23 @@
 package com.example.simple.recommendation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import org.junit.Before;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.simple.recommendation.database.DataLoader;
 import com.example.simple.recommendation.spring.entity.Article;
+import com.example.simple.recommendation.spring.entity.ArticleKeyword;
+import com.example.simple.recommendation.spring.entity.ArticleMeta;
+import com.example.simple.recommendation.spring.entity.Category;
 import com.example.simple.recommendation.spring.entity.Language;
+import com.example.simple.recommendation.spring.service.ArticleKeywordService;
+import com.example.simple.recommendation.spring.service.ArticleMetaService;
 import com.example.simple.recommendation.spring.service.ArticleService;
 import com.example.simple.recommendation.spring.service.CategoryService;
 import com.example.simple.recommendation.spring.service.LanguageService;
@@ -21,33 +27,61 @@ import com.example.simple.recommendation.spring.service.LanguageService;
 public class SimpleRecommendationApplicationTests {
 	
 	@Autowired
-	ArticleService articleService;
+	private ArticleService articleService;
 	
 	@Autowired
-	LanguageService languageService;
+	private LanguageService languageService;
 
 	@Autowired
-	CategoryService categoryService;
+	private CategoryService categoryService;
 
 	@Autowired
 	private LanguageRecommendation recommender;
 
 	@Autowired
-	DataLoader dataLoader;
+	private ArticleMetaService articleMetaService;
 	
-	@Before
-	public void setUp() {
-		dataLoader.loadData();
+	@Autowired
+	private ArticleKeywordService articleKeywordService;
+	
+	private List<Language> languages;
+	private List<Category> categories;
+	private List<Article> articles;
+	private List<ArticleMeta> articleMetas;
+	private List<ArticleKeyword> articleKeywords;
+	
+	@Test
+	public void languagesExist() {
+		languages = languageService.listLanguages();
+		assertNotNull(languages);
 	}
 
 	@Test
-	public void recommend() {
+	public void categoriesExist() {
+		categories = categoryService.listCategories();
+		assertNotNull(categories);
+	}
+	
+	@Test
+	public void articlesExist() {
+		articles = articleService.listArticles();
+		assertNotNull(articles);
+	}
+	
+	@Test
+	public void articleMetasExist() {
+		articleMetas = articleMetaService.listArticleMetas();
+		assertNotNull(articleMetas);
+	}
 
-		Language language = languageService.getLanguageByKey("DE");
-		assertEquals("DE", language.getLanguageKey());
-		
-		Article sportEnglish = articleService.getArticle(1);
-		assertEquals("EN", sportEnglish.getLanguage().getLanguageKey());;
+	@Test
+	public void articleKeywordsExist() {
+		articleKeywords = articleKeywordService.listAllKeywords();
+		assertNotNull(articleKeywords);
+	}
+	
+	@Test
+	public void recommend() {
 
 		String recommended = recommender.recommend();
 		assertEquals("Hello from recommend()", recommended);
