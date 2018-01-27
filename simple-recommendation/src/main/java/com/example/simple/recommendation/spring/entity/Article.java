@@ -2,11 +2,15 @@ package com.example.simple.recommendation.spring.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -37,19 +41,15 @@ public class Article {
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
 	
-	/*
-	 * Should be counted differently. 
-	 * Here only for a demonstration purpose
-	*/
-	@Column(name = "KEYWORD_NUMBER")
-	private int keywordsInArticle;
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="articles")
+	private List<Keyword> keywords;
 
 	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(String newArticleTitle) {
-		title = newArticleTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	public Language getLanguage() {
@@ -84,23 +84,35 @@ public class Article {
 		this.content = content;
 	}
 	
-	public int getKeyworsInArticle() {
-		return keywordsInArticle;
+	public List<Keyword> getKeyworsInArticle() {
+		return keywords;
 	}
 
-	public void setKeywordsInArticle(int keywordsInArticle) {
-		this.keywordsInArticle = keywordsInArticle;
+	public void setKeywordsInArticle(List<Keyword> keywords) {
+		this.keywords = keywords;
+	}
+	
+	public int getKeywordCount() {
+		return keywords.size();
 	}
 
 	public Article() {
 	}
-
-	public Article(String title, String articleCode, Language language, String content, Category category, int keywordsInArticle) {
+	
+	public Article(String title, String articleCode, Language language, String content, Category category) {
 		this.title = title;
 		this.articleCode = articleCode;
 		this.language = language;
 		this.content = content;
 		this.category = category;
-		this.keywordsInArticle = keywordsInArticle;
+	}
+
+	public Article(String title, String articleCode, Language language, String content, Category category, List<Keyword> keywords) {
+		this.title = title;
+		this.articleCode = articleCode;
+		this.language = language;
+		this.content = content;
+		this.category = category;
+		this.keywords = keywords;
 	}
 }

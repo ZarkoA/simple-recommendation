@@ -17,11 +17,11 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.example.simple.recommendation.spring.entity.Article;
-import com.example.simple.recommendation.spring.entity.ArticleKeyword;
+import com.example.simple.recommendation.spring.entity.Keyword;
 import com.example.simple.recommendation.spring.entity.ArticleMeta;
 import com.example.simple.recommendation.spring.entity.Category;
 import com.example.simple.recommendation.spring.entity.Language;
-import com.example.simple.recommendation.spring.service.ArticleKeywordService;
+import com.example.simple.recommendation.spring.service.KeywordService;
 import com.example.simple.recommendation.spring.service.ArticleMetaService;
 import com.example.simple.recommendation.spring.service.ArticleService;
 import com.example.simple.recommendation.spring.service.CategoryService;
@@ -65,8 +65,8 @@ public class AppConfig {
 				Article.class,
 				ArticleMetaService.class,
 				ArticleService.class,
-				ArticleKeyword.class,
-				ArticleKeywordService.class,
+				Keyword.class,
+				KeywordService.class,
 				Category.class,
 				CategoryService.class,
 				ArticleMeta.class,

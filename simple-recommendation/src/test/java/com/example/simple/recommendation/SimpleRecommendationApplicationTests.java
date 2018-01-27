@@ -1,30 +1,38 @@
 package com.example.simple.recommendation;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.simple.recommendation.database.DataLoader;
+import com.example.simple.recommendation.database.DataLoaderImpl;
+import com.example.simple.recommendation.spring.config.AppConfig;
 import com.example.simple.recommendation.spring.entity.Article;
-import com.example.simple.recommendation.spring.entity.ArticleKeyword;
 import com.example.simple.recommendation.spring.entity.ArticleMeta;
 import com.example.simple.recommendation.spring.entity.Category;
+import com.example.simple.recommendation.spring.entity.Keyword;
 import com.example.simple.recommendation.spring.entity.Language;
-import com.example.simple.recommendation.spring.service.ArticleKeywordService;
 import com.example.simple.recommendation.spring.service.ArticleMetaService;
 import com.example.simple.recommendation.spring.service.ArticleService;
 import com.example.simple.recommendation.spring.service.CategoryService;
+import com.example.simple.recommendation.spring.service.KeywordService;
 import com.example.simple.recommendation.spring.service.LanguageService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SimpleRecommendationApplicationTests {
+	
+	private static AnnotationConfigApplicationContext context;
 	
 	@Autowired
 	private ArticleService articleService;
@@ -42,42 +50,55 @@ public class SimpleRecommendationApplicationTests {
 	private ArticleMetaService articleMetaService;
 	
 	@Autowired
-	private ArticleKeywordService articleKeywordService;
+	private KeywordService keywordService;
 	
 	private List<Language> languages;
 	private List<Category> categories;
 	private List<Article> articles;
 	private List<ArticleMeta> articleMetas;
-	private List<ArticleKeyword> articleKeywords;
+	private List<Keyword> keywords;
+	
+	@BeforeClass
+	public static void loadData() {
+		context = new AnnotationConfigApplicationContext(AppConfig.class);
+
+		DataLoader loader = new DataLoaderImpl(context);
+		loader.loadData();
+	}
+	
+	@AfterClass
+	public static void closeContext() {
+		context.close();
+	}
 	
 	@Test
 	public void languagesExist() {
 		languages = languageService.listLanguages();
-		assertNotNull(languages);
+		assertTrue(languages.size() > 0);
 	}
 
 	@Test
 	public void categoriesExist() {
 		categories = categoryService.listCategories();
-		assertNotNull(categories);
+		assertTrue(categories.size() > 0);
 	}
 	
 	@Test
 	public void articlesExist() {
 		articles = articleService.listArticles();
-		assertNotNull(articles);
+		assertTrue(articles.size() > 0);
 	}
 	
 	@Test
 	public void articleMetasExist() {
 		articleMetas = articleMetaService.listArticleMetas();
-		assertNotNull(articleMetas);
+		assertTrue(articleMetas.size() > 0);
 	}
 
 	@Test
-	public void articleKeywordsExist() {
-		articleKeywords = articleKeywordService.listAllKeywords();
-		assertNotNull(articleKeywords);
+	public void keywordsExist() {
+		keywords = keywordService.listAllKeywords();
+		assertTrue(keywords.size() > 0);
 	}
 	
 	@Test

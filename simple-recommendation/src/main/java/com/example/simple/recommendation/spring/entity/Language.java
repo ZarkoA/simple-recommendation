@@ -7,9 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "LANGUAGE")
+@Table(name = "LANGUAGE",
+	uniqueConstraints = {@UniqueConstraint(columnNames = {"LANGUAGE_KEY"})}
+)
 public class Language {
 
 	@Id

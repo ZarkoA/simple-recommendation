@@ -7,17 +7,17 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.simple.recommendation.spring.entity.ArticleKeyword;
+import com.example.simple.recommendation.spring.entity.Keyword;
 
 @Repository
-public class ArticleKeywordDaoImpl implements ArticleKeywordDao {
+public class KeywordDaoImpl implements KeywordDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public void addArticleKeyword(ArticleKeyword articleKeyword) {
-		sessionFactory.getCurrentSession().save(articleKeyword);
+	public void addKeyword(Keyword keyword) {
+		sessionFactory.getCurrentSession().save(keyword);
 	}
 
 	@Override
@@ -30,13 +30,13 @@ public class ArticleKeywordDaoImpl implements ArticleKeywordDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ArticleKeyword> listAllKeywords() {
-		return sessionFactory.getCurrentSession().createQuery("from ArticleKeyword").list();
+	public List<Keyword> listAllKeywords() {
+		return sessionFactory.getCurrentSession().createQuery("from Keyword").list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ArticleKeyword> listArticleKeywords(long articleId) {
+	public List<Keyword> listArticleKeywords(long articleId) {
 
 		Query query = sessionFactory.getCurrentSession().createQuery("from ArticleKeyword as AK where AK.article.articleid = :articleId");
 		query.setParameter("articleId", articleId);
