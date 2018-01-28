@@ -6,8 +6,8 @@ import com.example.simple.recommendation.spring.entity.Category;
 
 public interface CategoryService {
 	
-	void addCategory(Category category);
-	Category getCategoryById(long categoryId);
-	Category getCategoryByTitle(String categoryTitle);
-	List<Category> listCategories();
+	public void addCategory(Category category);
+	public Category getCategoryById(long categoryId);
+	public Category getCategoryByTitle(String categoryTitle);
+	public List<Category> listCategories();
 }

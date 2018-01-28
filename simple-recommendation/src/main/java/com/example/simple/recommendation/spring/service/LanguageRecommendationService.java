@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.simple.recommendation.LanguageRecommendation;
-import com.example.simple.recommendation.Recommendable;
+import com.example.simple.recommendation.recommend.LanguageRecommendation;
+import com.example.simple.recommendation.recommend.Recommendable;
 import com.example.simple.recommendation.spring.entity.Article;
 
 @Service

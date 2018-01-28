@@ -6,8 +6,8 @@ import com.example.simple.recommendation.spring.entity.Keyword;
 
 public interface KeywordDao {
 
-	void addKeyword(Keyword keyword);
-	int getArticleKeywordCount(long articleId);
-	List<Keyword> listAllKeywords();
-	List<Keyword> listArticleKeywords(long articleId);
+	public void addKeyword(Keyword keyword);
+	public int getArticleKeywordCount(long articleId);
+	public List<Keyword> listKeywords();
+	public List<Keyword> listArticleKeywords(long articleId);
 }

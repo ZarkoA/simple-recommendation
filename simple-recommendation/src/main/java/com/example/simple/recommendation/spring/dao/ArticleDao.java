@@ -7,8 +7,8 @@ import com.example.simple.recommendation.spring.entity.Language;
 
 public interface ArticleDao {
 	
-	void add(Article article);
-	List<Article> listArticles();
-	Article getArticleById(long articleId);
+	public void add(Article article);
+	public List<Article> listArticles();
+	public Article getArticleById(long articleId);
 	public List<Language> listMissingLanguages(Article article);
 }

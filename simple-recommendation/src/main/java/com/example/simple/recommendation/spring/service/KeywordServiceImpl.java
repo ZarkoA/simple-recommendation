@@ -30,8 +30,8 @@ public class KeywordServiceImpl implements KeywordService {
 
 	@Transactional
 	@Override
-	public List<Keyword> listAllKeywords() {
-		return keywordDao.listAllKeywords();
+	public List<Keyword> listKeywords() {
+		return keywordDao.listKeywords();
 	}
 
 	@Transactional

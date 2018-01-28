@@ -30,7 +30,7 @@ public class KeywordDaoImpl implements KeywordDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Keyword> listAllKeywords() {
+	public List<Keyword> listKeywords() {
 		return sessionFactory.getCurrentSession().createQuery("from Keyword").list();
 	}
 

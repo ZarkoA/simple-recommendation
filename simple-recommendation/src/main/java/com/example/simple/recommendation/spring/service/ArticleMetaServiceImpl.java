@@ -27,5 +27,4 @@ public class ArticleMetaServiceImpl implements ArticleMetaService {
 	public List<ArticleMeta> listArticleMetas() {
 		return articleMataDao.listArticleMetas();
 	}
-
 }

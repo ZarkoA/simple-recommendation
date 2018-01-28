@@ -7,8 +7,8 @@ import com.example.simple.recommendation.spring.entity.Language;
 
 public interface ArticleService {
 
-	void addArticle(Article article);
-	List<Article> listArticles();
-	Article getArticle(long articleId);
-	List<Language> listMissingLanguages(Article article);
+	public void addArticle(Article article);
+	public List<Article> listArticles();
+	public Article getArticle(long articleId);
+	public List<Language> listMissingLanguages(Article article);
 }

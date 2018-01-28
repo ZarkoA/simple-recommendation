@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -41,7 +42,11 @@ public class Article {
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
 	
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy="articles")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(
+			name="ARTICLE_KEYWORD", 
+			joinColumns = @JoinColumn(name = "ARTICLE_ID"), 
+			inverseJoinColumns = @JoinColumn(name = "KEYWORD_ID"))
 	private List<Keyword> keywords;
 
 	public String getTitle() {

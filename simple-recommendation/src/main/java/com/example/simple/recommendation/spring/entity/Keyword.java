@@ -10,37 +10,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(
-		name = "KEYWORD", 
-		uniqueConstraints = @UniqueConstraint(columnNames={"KEYWORD", "LANGUAGE_KEY"}))
+@Table(name = "KEYWORD", 
+		uniqueConstraints = @UniqueConstraint(columnNames={"CONTENT", "LANGUAGE_KEY"}))
 public class Keyword {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID", unique = true)
-	private Long keywordId;
+	private long keywordId;
 	
-	@Column(name = "KEYWORD")
-	private String keyword;
+	@Column(name = "CONTENT")
+	private String content;
 	
 	@OneToOne
-	@JoinColumn(name = "LANGUAGE_KEY", nullable = false)
+	@JoinColumn(name = "LANGUAGE_KEY")
 	private Language language;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(
-			name="ARTICLE_KEYWORD", 
-			joinColumns = @JoinColumn(name = "KEYWORD_ID"), 
-			inverseJoinColumns = @JoinColumn(name = "ARTICLE_ID"))  
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="keywords")
 	private List<Article> articles;
-	
 
 	public Long getKeywordId() {
 		return keywordId;
@@ -58,12 +51,12 @@ public class Keyword {
 		this.language = language;
 	}
 
-	public String getKeyword() {
-		return keyword;
+	public String getContent() {
+		return content;
 	}
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public List<Article> getArticles() {
@@ -78,16 +71,12 @@ public class Keyword {
 	}
 	
 	public Keyword(String keyword, Language language) {
-		this.keyword = keyword;
+		this.content = keyword;
 		this.language = language;
 	}
 	
-	public Keyword(String keyword, String languageKey) {
-		this.keyword = keyword;
-	}
-
-	public Keyword(String keyword, List<Article> articles) {
-		this.keyword = keyword;
+	public Keyword(String content, Language language, List<Article> articles) {
+		this.content = content;
 		this.articles = articles;
 	}
 }

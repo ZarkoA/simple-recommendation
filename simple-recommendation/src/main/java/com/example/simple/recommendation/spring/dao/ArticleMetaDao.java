@@ -6,6 +6,6 @@ import com.example.simple.recommendation.spring.entity.ArticleMeta;
 
 public interface ArticleMetaDao {
 
-	void addArticleMeta(ArticleMeta improvement);
-	List<ArticleMeta> listArticleMetas();
+	public void addArticleMeta(ArticleMeta improvement);
+	public List<ArticleMeta> listArticleMetas();
 }

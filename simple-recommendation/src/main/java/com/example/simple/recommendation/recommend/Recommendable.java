@@ -1,4 +1,4 @@
-package com.example.simple.recommendation;
+package com.example.simple.recommendation.recommend;
 
 import java.util.List;
 

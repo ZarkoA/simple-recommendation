@@ -1,4 +1,4 @@
-package com.example.simple.recommendation;
+package com.example.simple.recommendation.recommend;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,10 +24,9 @@ public class LanguageRecommendation implements Recommendable {
 				.map(Language::getDescription)
 				.collect(Collectors.toList());
 		
+		System.out.println("Missing languages for the article: " + article.getTitle() + " are: ");
+		missingLanguages.forEach(System.out::println);
+		
 		return missingLanguages;
-	}
-	
-	public String recommend(){
-		return "Hello from recommend()";
 	}
  }
